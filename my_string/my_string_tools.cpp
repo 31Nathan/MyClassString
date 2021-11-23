@@ -5,7 +5,7 @@
 ** my_string_tools
 */
 
-#include "../include/my_string/my_string.hpp"
+#include "../include/my_string.hpp"
 #include <iostream>
 
 //OPERATOR
@@ -40,7 +40,7 @@ int MyString::stringCmp(char *aBase, char *aCompare)
 }
 
 //PUBLIC
-char *MyString::get(void)
+char *MyString::value(void)
 {
     return this->m_str;
 }
@@ -81,20 +81,31 @@ int MyString::size(void) {
     return i == 0 ? 0 : i -1;
 }
 
+void MyString::erase(void) {
+
+    this->m_str = const_cast<char *>("");
+}
+
+char *MyString::substr(int index) {
+    
+    if (index < 0)
+        return this->m_str;
+    else if (index > this->size())
+        return const_cast<char *>("");
+    else
+        return &this->m_str[index];
+}
+
 int main() 
 {
     char test[80];
     char *lol;
 
-    test[0] = 'N';
-    test[1] = '\0';
+    MyString toto ("Nathan");
+    std::cout << toto.value() << std::endl;
 
-    MyString toto (test);
-    std::cout << test << std::endl;
-
-    MyString tata ("tata");
-    toto = toto + tata;
+    lol = toto.substr(3);
     
-    std::cout << toto.get() << std::endl;
+    std::cout << lol << std::endl;
     return toto.size();
 }

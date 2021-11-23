@@ -5,12 +5,11 @@
 ## Stumper
 ##
 
-SRC			=	src/1st_Cpp.cpp		\
-				lib/my_strtools.cpp \
+SRC			=	my_string/my_string_tools.cpp	\
 
 NAME		=	ExecMoiBg
 
-CFLAGS		=	-I include/
+CFLAGS		=	-I include/my_string/
 
 LDFLAGS		=	
 

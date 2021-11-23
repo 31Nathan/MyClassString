@@ -19,15 +19,17 @@ class MyString {
         MyString(const char *aString="");
 
         int size(void);
-        char *get(void);
+        char *value(void);
 
         bool equal(MyString aString);
-        char *stringCat(MyString aString);
+        bool equal(char *aString);
 
-        bool equal(char *aString); 
+        char *stringCat(MyString aString);      
         char *stringCat(char *aString);
-        //To Do
-        //void erase(void);
+
+        void erase(void);
+
+        char *substr(int index);
 
     //Accessible que si tu travailles dans la classe
     private:
