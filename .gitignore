@@ -1,0 +1,7 @@
+#Linux
+*.o
+MyStringExec
+
+#Windows
+build
+Debug
