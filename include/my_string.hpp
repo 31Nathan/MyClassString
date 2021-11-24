@@ -19,13 +19,18 @@ class MyString {
         MyString(const char *aString="");
 
         int size(void);
-        char *value(void);
+
+        char *c_str(void);
+        char *data(void);
 
         bool equal(MyString aString);
         bool equal(char *aString);
 
         char *stringCat(MyString aString);      
         char *stringCat(char *aString);
+
+        char *stringCopy(MyString aDest, int len, int pos);
+        char *stringCopy(char *aDest, int len, int pos);
 
         void erase(void);
 
@@ -34,6 +39,7 @@ class MyString {
     //Accessible que si tu travailles dans la classe
     private:
         char *m_str;
+
 
         int stringCmp(char *aBase, char *aCompare);
 

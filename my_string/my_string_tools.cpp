@@ -6,7 +6,6 @@
 */
 
 #include "../include/my_string.hpp"
-#include <iostream>
 
 //OPERATOR
 MyString &MyString::operator+(MyString &aString) 
@@ -40,9 +39,14 @@ int MyString::stringCmp(char *aBase, char *aCompare)
 }
 
 //PUBLIC
-char *MyString::value(void)
+char *MyString::c_str(void)
 {
     return this->m_str;
+}
+
+char *MyString::data(void)
+{
+    return this->m_str;   
 }
 
 bool MyString::equal(MyString aString) 
@@ -96,15 +100,20 @@ char *MyString::substr(int index) {
         return &this->m_str[index];
 }
 
-int main() 
+char *MyString::stringCopy(char *aDest, int len, int pos)
+{   
+    int i = pos;
+    int j = 0;
+
+    for (; i < pos + len; i++) {
+        aDest[j] = this->m_str[i];
+        j++;
+    }    
+    aDest[j] = '\0';
+    return aDest;
+}
+
+char *MyString::stringCopy(MyString aDest, int len, int pos)
 {
-    char *lol;
-
-    MyString toto ("Nathan");
-    std::cout << toto.value() << std::endl;
-
-    lol = toto.substr(3);
-    
-    std::cout << lol << std::endl;
-    return toto.size();
+    return stringCopy(aDest.c_str(), len, pos);
 }

@@ -43,6 +43,7 @@ set(SRCROOT ${PROJECT_SOURCE_DIR}/my_string)
 set(INCROOT ${PROJECT_SOURCE_DIR}/include)
 set(SRC
 	${SRCROOT}/my_string_tools.cpp
+    ${SRCROOT}/main.cpp
 )
 
 add_executable (my_string ${SRC})
