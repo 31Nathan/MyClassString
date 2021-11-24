@@ -98,7 +98,6 @@ char *MyString::substr(int index) {
 
 int main() 
 {
-    char test[80];
     char *lol;
 
     MyString toto ("Nathan");

@@ -7,7 +7,7 @@
 
 SRC			=	my_string/my_string_tools.cpp	\
 
-NAME		=	ExecMoiBg
+NAME		=	MyStringExec
 
 CFLAGS		=	-I include/my_string/
 
