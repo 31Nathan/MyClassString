@@ -10,7 +10,7 @@
 //OPERATOR
 MyString &MyString::operator+(MyString &aString) 
 {
-    this->m_str = this->stringCat(aString.m_str);
+    *this = this->stringCat(aString.m_str);
     return *this;
 }
 
@@ -21,6 +21,11 @@ MyString::MyString(char *aString) {
 
 MyString::MyString(char const *aString) {
     this->m_str = const_cast<char *>(aString);
+}
+
+//DESTRUCTOR
+MyString::~MyString(void) {
+    
 }
 
 //PRIVATE
@@ -59,7 +64,7 @@ bool MyString::equal(char *aString)
     return this->stringCmp(this->m_str, aString) == 0;
 }
 
-char *MyString::stringCat(char *aString)
+MyString MyString::stringCat(char *aString)
 {
     int i = 0;
     int j = 0;
@@ -67,12 +72,13 @@ char *MyString::stringCat(char *aString)
     while (this->m_str && this->m_str[i])
         i++;
     while (aString[j])
-        m_str[i++] = aString[j++];
-
-    return this->m_str;
+        this->m_str[i++] = aString[j++];
+    
+    this->m_str[i] = '\0'; 
+    return *this;
 }
 
-char *MyString::stringCat(MyString aString)
+MyString MyString::stringCat(MyString aString)
 {
     return stringCat(aString.m_str);
 }
@@ -105,10 +111,9 @@ char *MyString::stringCopy(char *aDest, int len, int pos)
     int i = pos;
     int j = 0;
 
-    for (; i < pos + len; i++) {
-        aDest[j] = this->m_str[i];
-        j++;
-    }    
+    while (i < (pos + len))
+        aDest[j++] = this->m_str[i++];
+
     aDest[j] = '\0';
     return aDest;
 }

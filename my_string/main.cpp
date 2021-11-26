@@ -3,15 +3,15 @@
 
 int main() 
 {
-    char *lol;
     char test[80];
+    test[0] = 'P';
+    test[1] = '\0';
 
-    MyString toto ("Nathan");
+    MyString toto ("athan");
     MyString tata (test);
-    std::cout << toto.c_str() << std::endl;
 
-    lol = toto.stringCopy(test, 2, 3);
-    
-    std::cout << lol << std::endl;
-    return toto.size();
+    tata = tata.stringCat(toto);
+
+    std::cout << tata.c_str() << std::endl;
+    return 0;
 }
