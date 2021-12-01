@@ -4,14 +4,16 @@
 int main() 
 {
     char test[80];
-    test[0] = 'P';
+    test[0] = 'N';
     test[1] = '\0';
+    char test2[10] = {'a', 't', 'h', 'a', 'n', '\0'};
+    char test3[20] = {'b', 'e', 'a', 'u'};
 
-    MyString toto ("athan");
+    MyString toto (test2);
     MyString tata (test);
 
-    tata = tata.stringCat(toto);
+    toto.stringCat(test3);
 
-    std::cout << tata.c_str() << std::endl;
+    std::cout << test3 << std::endl;
     return 0;
 }

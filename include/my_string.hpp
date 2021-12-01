@@ -34,22 +34,23 @@ class MyString {
         // @return false if not
         ///
         bool equal(MyString aString);
-        bool equal(char *aString);
-
+        
+        ///
+        // @brief Concatenate the class str and the param aString
+        // 
+        // @param aString to be concatenate
+        // @return MyString 
+        ///
         MyString stringCat(MyString aString);      
-        MyString stringCat(char *aString);
 
-        char *stringCopy(MyString aDest, int len, int pos);
-        char *stringCopy(char *aDest, int len, int pos);
+        MyString stringCopy(MyString aDest, int len, int pos = 0);
 
         void erase(void);
-
-        char *substr(int index);
 
     //Accessible que si tu travailles dans la classe
     private:
         char *m_str;
-        int stringCmp(char *aBase, char *aCompare);
+        int stringCmp(MyString aBase, MyString aCompare);
 
     //Accessible que si tu travailles dans la classe ou dans une classe héritante
     protected:

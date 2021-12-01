@@ -29,13 +29,13 @@ MyString::~MyString(void) {
 }
 
 //PRIVATE
-int MyString::stringCmp(char *aBase, char *aCompare)
+int MyString::stringCmp(MyString aBase, MyString aCompare)
 {
     int i = 0;
     int cmpResult = 0;
 
-    while (aBase && aCompare && aBase[i] && aCompare[i]) {
-        cmpResult = aBase[i] - aCompare[i];
+    while (aBase.m_str && aCompare.m_str && aBase.m_str[i] && aCompare.m_str[i]) {
+        cmpResult = aBase.m_str[i] - aCompare.m_str[i];
         if (cmpResult != 0)
             break;
         i++;
@@ -59,28 +59,18 @@ bool MyString::equal(MyString aString)
     return this->stringCmp(this->m_str, aString.m_str) == 0;
 }
 
-bool MyString::equal(char *aString)
-{
-    return this->stringCmp(this->m_str, aString) == 0;
-}
-
-MyString MyString::stringCat(char *aString)
+MyString MyString::stringCat(MyString aString)
 {
     int i = 0;
     int j = 0;
 
     while (this->m_str && this->m_str[i])
         i++;
-    while (aString[j])
-        this->m_str[i++] = aString[j++];
+    while (aString.m_str[j])
+        this->m_str[i++] = aString.m_str[j++];
     
-    this->m_str[i] = '\0'; 
-    return *this;
-}
-
-MyString MyString::stringCat(MyString aString)
-{
-    return stringCat(aString.m_str);
+    aString.m_str[i] = '\0'; 
+    return aString;
 }
 
 int MyString::size(void) {
@@ -96,29 +86,14 @@ void MyString::erase(void) {
     this->m_str = const_cast<char *>("");
 }
 
-char *MyString::substr(int index) {
-    
-    if (index < 0)
-        return this->m_str;
-    else if (index > this->size())
-        return const_cast<char *>("");
-    else
-        return &this->m_str[index];
-}
-
-char *MyString::stringCopy(char *aDest, int len, int pos)
-{   
+MyString MyString::stringCopy(MyString aDest, int len, int pos)
+{
     int i = pos;
     int j = 0;
 
     while (i < (pos + len))
-        aDest[j++] = this->m_str[i++];
+        aDest.m_str[j++] = this->m_str[i++];
 
-    aDest[j] = '\0';
+    aDest.m_str[j] = '\0';
     return aDest;
-}
-
-char *MyString::stringCopy(MyString aDest, int len, int pos)
-{
-    return stringCopy(aDest.c_str(), len, pos);
 }
