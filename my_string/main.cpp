@@ -6,14 +6,12 @@ int main()
     char test[80];
     test[0] = 'N';
     test[1] = '\0';
-    char test2[10] = {'a', 't', 'h', 'a', 'n', '\0'};
-    char test3[20] = {'b', 'e', 'a', 'u'};
+    char test2[30] = {'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 's', 'e', 'n', 't', 'e', 'n', 'c', 'e', '\0'};
+    char test3[30] = {'b', 'e', 'a', 'u'};
 
     MyString toto (test2);
-    MyString tata (test);
 
-    toto.stringCat(test3);
-
-    std::cout << test3 << std::endl;
+    toto.erase(4);
+    std::cout << toto.c_str() << std::endl;
     return 0;
 }

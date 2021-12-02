@@ -64,16 +64,16 @@ MyString MyString::stringCat(MyString aString)
     int i = 0;
     int j = 0;
 
-    while (this->m_str && this->m_str[i])
+    while (aString.m_str && aString.m_str[i])
         i++;
     while (aString.m_str[j])
-        this->m_str[i++] = aString.m_str[j++];
+        aString.m_str[i++] = this->m_str[j++];
     
     aString.m_str[i] = '\0'; 
     return aString;
 }
 
-int MyString::size(void) {
+size_t MyString::size(void) {
 
     int i = 0;
 
@@ -81,9 +81,16 @@ int MyString::size(void) {
     return i == 0 ? 0 : i -1;
 }
 
-void MyString::erase(void) {
+size_t MyString::length(void) 
+{
+    return size();
+}
 
-    this->m_str = const_cast<char *>("");
+MyString& MyString::erase(size_t pos, size_t len) 
+{
+    if ((pos + len) > this->length())
+        
+    return *this;    
 }
 
 MyString MyString::stringCopy(MyString aDest, int len, int pos)

@@ -10,18 +10,22 @@
 
 class MyString {
     //Accessible pour tout le monde
+    
     public:
-        //OPERATEUR
+        //OPERATOR
         MyString &operator+(MyString &aString);
 
-        //CONSTRUCTEUR
+        //CONSTRUCTOR
         MyString(char *aString);
         MyString(const char *aString="");
 
-        //DESTRUCTEUR
+        //DESTRUCTOR
         ~MyString(void);
 
-        int size(void);
+        //FUNCTIONS
+
+        size_t size(void);
+        size_t length(void);
 
         char *c_str(void);
         char *data(void);
@@ -33,19 +37,22 @@ class MyString {
         // @return true if string are equals
         // @return false if not
         ///
-        bool equal(MyString aString);
-        
+        bool equal(MyString aString);      
         ///
         // @brief Concatenate the class str and the param aString
         // 
         // @param aString to be concatenate
-        // @return MyString 
+        // @return MyString + aString concatenate
         ///
         MyString stringCat(MyString aString);      
 
         MyString stringCopy(MyString aDest, int len, int pos = 0);
 
-        void erase(void);
+        MyString& erase(size_t pos = 0, size_t len = npos);
+
+
+        //VARIABLES
+        static const size_t npos = -1;
 
     //Accessible que si tu travailles dans la classe
     private:
